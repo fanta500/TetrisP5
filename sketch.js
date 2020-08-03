@@ -6,11 +6,19 @@ const blockSize = 40;
 const padding = 5 * blockSize;
 let paused = false;
 
+let gameMusic;
+
+function preload() {
+    soundFormats("mp3");
+    gameMusic = loadSound("music");
+}
+
 function setup() {
     'use strict';
     canvas = createCanvas(gameWidth * blockSize + 2 * padding, gameHeight * blockSize);
     canvas.position(displayWidth / 2 - width / 2, 100) //set the x position such that center of canvas is center of screen (assumed browser is fullscreen)
     textAlign(CENTER); //draw text at center of bounding box
+    gameMusic.loop();
     game = new Game(gameWidth, gameHeight, blockSize, padding);
     noLoop();
     game.drawGrid();
