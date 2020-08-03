@@ -8,14 +8,24 @@ let paused = false;
 
 function setup() {
     'use strict';
-    canvas = createCanvas(gameWidth*blockSize + 2*padding, gameHeight*blockSize);
-    canvas.position(displayWidth/2-width/2,100) //set the x position such that center of canvas is center of screen (assumed browser is fullscreen)
+    canvas = createCanvas(gameWidth * blockSize + 2 * padding, gameHeight * blockSize);
+    canvas.position(displayWidth / 2 - width / 2, 100) //set the x position such that center of canvas is center of screen (assumed browser is fullscreen)
     textAlign(CENTER); //draw text at center of bounding box
     game = new Game(gameWidth, gameHeight, blockSize, padding);
     noLoop();
     game.drawGrid();
-    
+
     displayTimer(6, 0); //call with one higher than first value to display
+}
+
+function centerCanvas() {
+    var x = (windowWidth - width) / 2;
+    var y = (windowHeight - height) / 2;
+    canvas.position(x, y);
+}
+
+function windowResized() {
+    centerCanvas();
 }
 
 function draw() {
@@ -31,20 +41,20 @@ function draw() {
 
 function displayTimer(time, offset) {
     if (time > 0) {
-        fill(color(0,0,0))
+        fill(color(0, 0, 0))
         textSize(72);
-        text(time, padding+gameWidth*blockSize/2, gameHeight*blockSize/4+offset)
+        text(time, padding + gameWidth * blockSize / 2, gameHeight * blockSize / 4 + offset)
         setTimeout(() => {
-            displayTimer(time-1, offset+blockSize*2)
+            displayTimer(time - 1, offset + blockSize * 2)
         }, 1000);
     } else {
         loop();
     }
-    
+
 }
 
 function keyPressed() {
-    switch(keyCode) {
+    switch (keyCode) {
         case LEFT_ARROW:
             game.moveLeftRight("LEFT")
             break;
