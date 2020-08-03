@@ -157,7 +157,7 @@ class Game {
             this.restart() //game over
         }
 
-        if (frameCount % 25 === 0) { //perform move once every N frames 
+        if (frameCount % 15 === 0) { //perform move once every N frames 
             this.moveDown();
         }
     }

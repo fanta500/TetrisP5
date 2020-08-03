@@ -8,17 +8,21 @@ let paused = false;
 
 let gameMusic;
 
-function preload() {
-    soundFormats("mp3");
-    gameMusic = loadSound("music");
-}
+// function preload() {
+//     soundFormats("mp3");
+//     gameMusic = loadSound("music");
+// }
 
 function setup() {
     'use strict';
     canvas = createCanvas(gameWidth * blockSize + 2 * padding, gameHeight * blockSize);
     canvas.position(displayWidth / 2 - width / 2, 100) //set the x position such that center of canvas is center of screen (assumed browser is fullscreen)
+    frameRate(30);
+
+    //gameMusic.loop();
+
     textAlign(CENTER); //draw text at center of bounding box
-    gameMusic.loop();
+    
     game = new Game(gameWidth, gameHeight, blockSize, padding);
     noLoop();
     game.drawGrid();
@@ -39,6 +43,10 @@ function windowResized() {
 function draw() {
     game.draw()
 
+    if (keyIsDown(DOWN_ARROW)) {
+        game.moveDown();
+    }
+    
     //for debugging
     // if (mouseIsPressed) {
     //     fill(color(0,0,0))
