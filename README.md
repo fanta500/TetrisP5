@@ -11,9 +11,9 @@ down arrow: move shape down once
 up arrow: rotate shape 90 degrees clockwise  
 left/right arrow: move shape left/right  
 
-Music from:  
+<!-- Music from:  
 https://www.fesliyanstudios.com/royalty-free-music/downloads-c/8-bit-music/6
 
-Track: 8 Bit Surf
+Track: 8 Bit Surf -->
 
 ![alt text](https://github.com/fanta500/TetrisP5/blob/master/screenshots/tetris.PNG?raw=true)
